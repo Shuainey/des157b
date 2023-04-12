@@ -5,7 +5,7 @@
     const body = document.querySelector('body');
     const banner = document.querySelector('#banner');
     const bannerImg = document.querySelector('#bannerImg');
-    const sections = document.querySelectorAll('section')
+    const sections = document.querySelectorAll('section');
     let mode = 'dark';
 
     

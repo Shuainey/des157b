@@ -10,8 +10,8 @@ body {
 }
 
 body.switch {
-    background-color: #6f6f6f;
-    color: #000000;
+    background-color: #2B2C5A;
+    color: #ecef25;
 }
 
 #container {
@@ -36,7 +36,8 @@ header {
     height: 250px;
     margin: auto;
     background-color: rgb(235, 235, 235);
-    color: #333;
+    border: 3px rgb(235, 235, 235) solid;
+    border-radius: 10px;
     overflow: hidden;
     display: grid;
 	place-items: center;
@@ -45,6 +46,7 @@ header {
 #banner.switch {
     background-color: #333;
     color: rgb(235, 235, 235);
+    border: 3px rgb(0, 0, 0) solid;
     transition: all 2s;
 }
 
@@ -91,7 +93,6 @@ section a:hover {
 
 section.switch a {
     color: #ffffff;
-
 }
 
 section.switch a:hover {
