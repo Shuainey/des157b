@@ -3,14 +3,15 @@
 }
 
 body {
-    background-color: #333;
+    background-color: #AC8E60;
     color: rgb(235, 235, 235);
     transition: all 2s;
+    font-family: andale mono, monospace;
 }
 
 body.switch {
-    background-color: rgb(235, 235, 235);
-    color: #333;
+    background-color: #6f6f6f;
+    color: #000000;
 }
 
 #container {
@@ -25,9 +26,10 @@ body.switch {
 
 header {
     margin: 0 auto 2em auto;
+    text-align: center;
 }
 
-#banner {
+#banner{
     position: relative;
     display: flex;
     width: 1100px;
@@ -54,9 +56,10 @@ main {
 
 main section {
     width: 25%;
-    border: 1px rgb(235, 235, 235) dashed;
+    border: 1px rgb(235, 235, 235) double;
+    border-width: 5px;
     margin: 0 .25em;
-    padding: 1em;
+    text-align: center;
 }
 
 a {
@@ -68,50 +71,62 @@ ul {
     list-style-type: none;
     margin-left: 0;
     padding-left: 0;
+    text-align: center;
 }
 
-section li {
-    padding-left: 1.2em;
-}
 
 section a {
     line-height: 1.1em;
     display: inline-block;
     padding: .5em;
-    color: orange;
+    color: #f7a40c;
 }
 
 section a:hover {
-    background-color: orange;
+    background-color: #f7a40c;
     color: #333;
+    border-radius: 80px;
+    box-shadow: 4px 4px 15px #ffffff;
 }
 
 section.switch a {
-    color: #333;
+    color: #ffffff;
+
 }
 
 section.switch a:hover {
     background-color: #333;
     color: rgb(235, 235, 235);
+    box-shadow: 4px 4px 15px #ffffff;
 }
 
 button {
+    background-color: #f7a40c;
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 12px;
-    background-color: orange;
-    color: #333;
-    border: 1px solid transparent;
+    border-radius: 80px;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    font-size: 16px;
+    font-family: 'Dekko';
+    user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+    transition: all 200ms;
 }
 
 button:hover {
-    background-color: coral;
-    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 4px 4px 15px rgb(255, 255, 255);
 }
 
 button.switch {
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(0, 0, 0);
     border-color: #333;
 }
 
