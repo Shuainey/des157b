@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title class="hidden">Blockbuster Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      filter: grayscale(20%) contrast(100%) invert(0%);
+    }
+  
+    .fa-expand{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 36px;
+      color: orange;
+    }
+  
+    .fa-expand:hover {
+      cursor: pointer;
+    }
+  
+    section {
+      position: absolute;
+    }
+  
+    #line1{
+      bottom: 10%;
+      left: 10%;
+      color: white;
+      font-size: 40px;
+      font-family: andale mono, monospace;
+    }
+  
+    #line2 {
+      bottom: 10%;
+      right: 30%;
+      margin-left: 100px;
+      color: white;
+      font-size: 40px;
+      font-family: andale mono, monospace;
+    }
+  
+    #line3 {
+      bottom: 10%;
+      right: 10%;
+      margin-left: 200px;
+      color: white;
+      font-size: 40px;
+      font-family: andale mono, monospace;
+    }
+  
+    #line4 {
+      color: white;
+      text-align: center;
+      font-size: 50px;
+      font-family: andale mono, monospace;
+    }
+  
+    #line5 {
+      color: white;
+      text-align: center;
+      font-size: 50px;
+      font-family: andale mono, monospace;
+    }
+  
+    .hidden {
+      opacity: 0;
+    }
+  
+    .showing {
+      animation: fade-in 3s;
+    }
+  
+    ul {
+      list-style-type: none;
+    }
+  
+    #preloader {
+      background: rgb(255, 255, 255) url(media/loading.gif) no-repeat center center;
+      background-size: 25%;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+  
+    }
+    
+    @keyframes fade-in{
+      0%{opacity: 0;}
+      100%{opacity: 1;}
+    }
+  
+    @keyframes fade-out{
+      0%{opacity: 1;}
+      100%{opacity: 0;}
+    }
+  
+  </style>
+
+</head>
+
+
+
+<body>
+  <div id="preloader"></div>
+
+  <video id="myVideo" poster="media/image.png" muted autoplay loop playsinline>
+    <source src="media/takeoff.webm" type="video/webm">
+    <source src="media/takeoff.mp4" type="video/mp4">
+    <p>
+      Your browser doesn't support HTML5 video.
+      Here is a <a href="media/takeoff.mp4">link to the video</a> instead.
+    </p>
+  </video>
+
+  <i class="fas fa-expand"></i>
+
+  <div id="text">
+    <div id="line1" class="hidden">
+      <ul>
+        <li>An airplane knows</li>
+        <li>With roaring confidence</li>
+        <li>How to hold us in his heart</li>
+        <li>And raise us up high above</li>
+      </ul>
+    </div>
+
+    <div id="line2" class="hidden">
+      <ul>
+        <li>An airplane knows</li>
+        <li>With daring assurance</li>
+        <li>When to take off and not stop</li>
+        <li>Until our destinations reached</li>
+      </ul>
+    </div>
+
+    <div id="line3" class="hidden">
+      <ul>
+        <li>Because of all that</li>
+        <li>Mentioned or not</li>
+        <li>I put my trust in him</li>
+        <li>And keep my dreams flying</li>
+      </ul>
+    </div>
+
+    <div id="line4" class="hidden">
+      <p>An Airplane Knows</p>
+    </div>
+
+    <div id="line5" class="hidden">
+      <p>By Megan Zhao</p>
+    </div>
+
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+      const myVideo = document.querySelector('#myVideo');
+      const fs = document.querySelector('.fa-expand');
+      const mySection = document.querySelector('#text');
+      const line1 = document.querySelector('#line1');
+      const line2 = document.querySelector('#line2');
+      const line3 = document.querySelector('#line3');
+      const line4 = document.querySelector('#line4');
+      const line5 = document.querySelector('#line5');
+      let loader = document.getElementById("preloader");
+      window.addEventListener("load", function() {
+        loader.style.display = "none";
+      });       
+
+      const intervalID = setInterval(checkTime, 1000);
+
+      function checkTime() {
+        if (1 < myVideo.currentTime && myVideo.currentTime < 5) {
+          line1.className = "showing";
+        } else {
+          line1.className = "hidden";
+        }
+
+        if (5 < myVideo.currentTime && myVideo.currentTime < 10) {
+          line2.className = "showing";
+        } else {
+          line2.className = "hidden";
+        }
+
+        if (10 < myVideo.currentTime && myVideo.currentTime < 15) {
+          line3.className = "showing";
+        } else {
+          line3.className = "hidden";
+        }
+
+        if (15 < myVideo.currentTime && myVideo.currentTime < 18) {
+          line4.className = "showing";
+        } else {
+          line4.className = "hidden";
+        }
+
+        if (18 < myVideo.currentTime && myVideo.currentTime < 20) {
+          line5.className = "showing";
+        } else {
+          line5.className = "hidden";
+        }
+      }
+
+      myVideo.addEventListener('mousemove', function(event) {
+        myVideo.playbackRate = event.clientX / 300 + .1;
+      });
+
+
+      fs.addEventListener('click', function() {
+        if(!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      })
+    })();
+  </script>
+</body>
