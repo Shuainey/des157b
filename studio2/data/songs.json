@@ -1,0 +1,42 @@
+{
+    "point1" : {
+        "setting" : "Drive to school",
+        "mood" : "Energetic",
+        "song" : "Golden Hour - Fujii Kaze & Jvke"
+    },
+    "point2" : {
+        "setting" : "Walking to class",
+        "mood" : "Lively",
+        "song" : "Hold On Tight - Aespa"
+    },
+    "point3" : {
+        "setting" : "In class",
+        "mood" : "Snooze",
+        "song" : "Frank Ocean - Pink + White"
+    },
+    "point4" : {
+        "setting" : "Gym",
+        "mood" : "Hyped",
+        "song" : "Superhero - Metro Boomin"
+    },
+    "point5" : {
+        "setting" : "Walking to library",
+        "mood" : "Exhausted",
+        "song" : "Kirari - FUjii Kaze"
+    },
+    "point6" : {
+        "setting" : "Studing in library",
+        "mood" : "studious",
+        "song" : "Howl's Moving Castle (Piano Version)"
+    },
+    "point7" : {
+        "setting" : "Driving back home",
+        "mood" : "Calm/Chill",
+        "song" : "Die For You - The Weekend"
+    },
+    "point8" : {
+        "setting" : "Gaming",
+        "mood" : "Focused",
+        "song" : "On The Street - j-hope & J. Cole"
+    }   
+}
