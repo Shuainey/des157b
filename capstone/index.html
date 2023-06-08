@@ -10,29 +10,87 @@
     <link href="styles.css" rel="stylesheet" />
     <script src="script.js" defer></script>
 
-    <title>version 1</title>
+    <title>version 3</title>
   </head>
   <body>
     <div id="sidebar">
       <div id="summary">
         <h1>What is this?</h1>
-        <p>summary goes here...</p>
+        <p>
+          This is a project surrounding the Davis Centennial Seal! The
+          Centennial Seal tells the history of the city and several main themes
+          that have allowed the city to evolve into what it is today. We decided
+          to make several minigames relating to several key aspects of the seal.
+        </p>
       </div>
       <div id="useful-links">
         <h2>Useful Links</h2>
-        <a href="#">link 1</a><br />
-        <a href="#">link 2</a><br />
-        <a href="#">link 3</a><br />
-        <a href="#">link 4</a><br />
+        <a
+          href="https://www.cityofdavis.org/city-hall/city-manager-s-office/arts-culture/davis-centennial-seal"
+          >Official Davis Centennial Seal Website</a
+        ><br />
+        <a href="https://susanshelton.com/Seals/Davis-Centennial-Seal"
+          >Susan Shelton's Website</a
+        ><br />
+        <!-- <a href="#">link 3</a><br />
+        <a href="#">link 4</a><br /> -->
       </div>
     </div>
+
     <div id="seal">
-      <img src="images/seal.jpg" alt="seal" />
-      <div class="temp-link" onclick="window.location.href='davis_guessr'">
-        eventually each section will be clickable
-      </div>
-      <div class="temp-link-2" onclick="window.location.href='soccer'">
-        eventually each section will be clickable
+      <img src="media/background.png" id="bg" alt="backgroundIMG" />
+      <div class="seal-main">
+        <img
+          src="media/Mask group-4.png"
+          class="inner"
+          id="mask1"
+          alt="mask1IMG"
+        />
+        <img
+          src="media/Mask group-5.png"
+          class="inner"
+          id="mask2"
+          alt="mask2IMG"
+        />
+        <img
+          src="media/Mask group-7.png"
+          class="inner"
+          id="mask3"
+          alt="mask3IMG"
+        />
+        <img
+          src="media/Mask group-6.png"
+          class="inner"
+          id="mask4"
+          alt="mask4IMG"
+          onclick="window.location.href='davis_guessr'"
+        />
+        <img
+          src="media/Mask group-3.png"
+          class="inner"
+          id="mask5"
+          alt="mask5IMG"
+        />
+        <img
+          src="media/Mask group-2.png"
+          class="inner"
+          id="mask6"
+          alt="mask6IMG"
+          onclick="window.location.href='trivia'"
+        />
+        <img
+          src="media/Mask group-8.png"
+          class="inner"
+          id="mask7"
+          alt="mask7IMG"
+          onclick="window.location.href='soccer'"
+        />
+        <img
+          src="media/Mask group-1.png"
+          class="inner"
+          id="mask8"
+          alt="mask8IMG"
+        />
       </div>
     </div>
   </body>

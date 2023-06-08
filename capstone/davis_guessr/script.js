@@ -1,41 +1,18 @@
 (async () => {
-  // const canvas = document.getElementById("compass");
-  // const ctx = canvas.getContext("2d");
-  // canvas.width = 300;
-  // canvas.height = 300;
-  // const centerX = canvas.width / 2;
-  // const centerY = canvas.height / 2;
-  // const compassAngle = 45;
-  // ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // ctx.beginPath();
-  // ctx.arc(centerX, centerY, 130, 0, 2 * Math.PI);
-  // ctx.lineWidth = 4;
-  // ctx.strokeStyle = "#333";
-  // ctx.stroke();
-  // ctx.beginPath();
-  // ctx.moveTo(centerX, centerY);
-  // const endX = centerX + Math.sin(compassAngle * (Math.PI / 180)) * 100;
-  // const endY = centerY - Math.cos(compassAngle * (Math.PI / 180)) * 100;
-  // ctx.lineTo(endX, endY);
-  // ctx.lineWidth = 2;
-  // ctx.strokeStyle = "red";
-  // ctx.stroke();
-  // ctx.beginPath();
-  // ctx.arc(centerX, centerY, 5, 0, 2 * Math.PI);
-  // ctx.fillStyle = "black";
-  // ctx.fill();
-  // ctx.font = "16px Arial";
-  // ctx.fillStyle = "#333";
-  // ctx.textAlign = "center";
-  // ctx.fillText(`Angle: ${compassAngle}°`, centerX, centerY + 80);
+  const help = document.querySelector(".fa-question-circle");
+  const help1 = document.querySelector("#help");
+  help.onclick = () => {
+    help1.show();
+  };
 
+  let dialog_up = false;
   const img = document.querySelector("#img");
   const guess = document.querySelector("#guess");
-  const dialog = document.querySelector("dialog");
-  const dialogText = document.querySelector("p");
+  const dialog = document.querySelector("#next");
+  const dialogText = dialog.querySelector("p");
   const but = document.querySelector("#dialog-click");
   let total_score = 0;
-  const m = L.map("map").setView([38.5382, -121.7617], 14);
+  const m = L.map("map").setView([38.5272, -121.7487], 14);
   // https://stackoverflow.com/questions/639695/how-to-convert-latitude-or-longitude-to-meters
   function meters(lat1, lon1, lat2, lon2) {
     // generally used geo measurement function
@@ -61,6 +38,7 @@
   let position;
 
   function onMapClick(e) {
+    if (dialog_up) return;
     if (position) {
       m.removeLayer(position);
     }
@@ -69,7 +47,7 @@
       color: "black",
       fillColor: "#000",
       fillOpacity: 0.5,
-      radius: 10,
+      radius: 15,
     }).addTo(m);
   }
 
@@ -77,17 +55,21 @@
 
   const map = document.querySelector("#map");
   const maximize = document.querySelector(".fa-compress");
+  // click maximize after 0.2 seconds to prevent map from being too small
   maximize.addEventListener("click", () => {
     map.classList.toggle("max");
     maximize.classList.toggle("fa-compress");
     maximize.classList.toggle("fa-maximize");
   });
+  setTimeout(() => {
+    maximize.click();
+  }, 2);
 
   const locations = await fetch("./images/location.json");
   const data = await locations.json();
   const images = Object.keys(data);
   const image_arr = [];
-  let location, circle;
+  let location, circle, line;
   while (image_arr.length < 5) {
     const random = Math.floor(Math.random() * images.length);
     if (!image_arr.includes(images[random])) {
@@ -100,16 +82,17 @@
   function next() {
     img.src = `./images/${image_arr[current]}`;
     location = data[image_arr[current]];
-    guess.classList.add("not-chosen");
     current++;
     if (position) m.removeLayer(position);
     if (circle) m.removeLayer(circle);
+    if (line) m.removeLayer(line);
   }
   but.addEventListener("click", (e) => {
     if (current === 4) {
       guess.classList.add("not-chosen");
       if (position) m.removeLayer(position);
       if (circle) m.removeLayer(circle);
+      if (line) m.removeLayer(line);
       setTimeout(() => {
         dialogText.textContent = `You scored ${total_score} points!`;
         dialog.show();
@@ -117,6 +100,7 @@
       }, 10);
       return;
     }
+    dialog_up = false;
     next();
   });
   guess.addEventListener("click", () => {
@@ -134,13 +118,24 @@
       color: "red",
       fillColor: "#f03",
       fillOpacity: 0.5,
-      radius: 10,
+      radius: 15,
     }).addTo(m);
+    line = L.polyline(
+      [
+        [lat, lng],
+        [location.lat, location.lng],
+      ],
+      { color: "gray", weight: 2 }
+    ).addTo(m);
+
     dialogText.textContent = `You were ${Math.round(
       meters(lat, lng, location.lat, location.lng),
       2
     )} meters away. You scored ${score} points.`;
     total_score += score;
+    dialog_up = true;
+    guess.classList.add("not-chosen");
+
     dialog.show();
   });
   next();
