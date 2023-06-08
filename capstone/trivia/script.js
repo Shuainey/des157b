@@ -119,7 +119,7 @@ const questions = [
     answers: [
       { text: 'In Front of the Memorial Union in UC Davis', correct: false },
       { text: 'Next to Mishka Cafe in Downtown', correct: true },
-      { text: 'Next to Mishka Cafe in Downtown', correct: false },
+      { text: 'In Front of the Davis ARC', correct: false },
       { text: 'Inside Jan Shrem and Maria Manetti Shrem Museum of Art', correct: false}
     ]
   },
