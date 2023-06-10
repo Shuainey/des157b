@@ -8,6 +8,19 @@ const txt = document.getElementById("tx")
 
 let shuffledQuestions, currentQuestionIndex
 
+var data = [
+  {
+      text: "Welcome!"
+      
+}, {
+      text: "Learn about Davis!"
+}, {
+      text: "Can you solve all five?"
+}, {
+      text: "Let's see your trivia skills!"
+}
+];
+
 var onLoad = anime({
   targets: '.intro',
   scale: 2,
@@ -23,18 +36,7 @@ var tx_conf = {
   //stayIn: 1
 }
 
-var data = [
-  {
-      text: "Welcome!"
-      
-}, {
-      text: "Learn about Davis!"
-}, {
-      text: "Can you solve all five?"
-}, {
-      text: "Let's see your trivia skills!"
-}
-];
+
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
